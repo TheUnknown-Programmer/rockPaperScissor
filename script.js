@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   let hand = ["Rock", "Paper", "Scissor"];
   let randomindex = Math.floor(Math.random() * hand.length);
