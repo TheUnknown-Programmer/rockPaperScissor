@@ -22,33 +22,38 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
-    console.log(`It's a tie! Both chose ${humanChoice}.`);
-    return;
-  }
+function playGame() {
+  function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+      console.log(`It's a tie! Both chose ${humanChoice}.`);
+      return;
+    }
 
-  if (
-    (humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "scissors" && computerChoice === "paper") ||
-    (humanChoice === "paper" && computerChoice === "rock")
-  ) {
-    humanScore++;
-    console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-  } else if (
-    (computerChoice === "rock" && humanChoice === "scissors") ||
-    (computerChoice === "scissors" && humanChoice === "paper") ||
-    (computerChoice === "paper" && humanChoice === "rock")
-  ) {
-    computerScore++;
-    console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
-  } else {
-    console.log("Invalid input. No score was updated.");
+    if (
+      (humanChoice === "rock" && computerChoice === "scissors") ||
+      (humanChoice === "scissors" && computerChoice === "paper") ||
+      (humanChoice === "paper" && computerChoice === "rock")
+    ) {
+      humanScore++;
+      console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+    } else if (
+      (computerChoice === "rock" && humanChoice === "scissors") ||
+      (computerChoice === "scissors" && humanChoice === "paper") ||
+      (computerChoice === "paper" && humanChoice === "rock")
+    ) {
+      computerScore++;
+      console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+    } else {
+      console.log("Invalid input. No score was updated.");
+    }
   }
-  console.log(`Scores: Human: ${humanScore}, Computer: ${computerScore}`);
+  const humanSelection = getHumanChoice();
+  const computerSelection = getComputerChoice();
+
+  playRound(humanSelection, computerSelection);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+for (let i = 0; i < 5; i++) {
+  playGame();
+}
+console.log(`Scores: Human: ${humanScore}, Computer: ${computerScore}`);
